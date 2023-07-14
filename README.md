@@ -27,8 +27,27 @@ Template literals allow us to pass data into HTML, instead of creating elements 
 
 https://stackoverflow.com/questions/67413357/javascript-loop-to-create-list-of-cards
 
+#### If Else Conditionals in Template Literals
+Using the following Syntax, we can selectively render components based on conditions. 
+
+```
+${ condition ? true action : false action }
+```
+
+This allows us to alternate between button colours depending on read status. 
+
+https://gist.github.com/wiledal/1888a24fafc11cafba73a8c12ac9d8a0
+
 #### Add Book Form
 When the `Add Book` button is pressed, we want to show a modal that allows the user to input data about a new book. 
+
+#### Book ID data onclick
+When the read status and remove book buttons are pressed, we need to know exactly which book to edit / remove. 
+
+First, we specify the data-attribute of each button as the book_id. 
+When the button is clicked, we retrieve the data attribute using JS. 
+
+https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
 
 #### Firebase
 Use Firebase as a database

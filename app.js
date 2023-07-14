@@ -13,12 +13,13 @@ function addBookToLibrary(newid, newtitle, newauthor, newstatus) {
 
 }
 
-function removeBookFromLibrary() {
-
+function removeBookFromLibrary(book_id) {
+  console.log(book_id);
+  console.log(book_id.dataset.attribute)
 }
 
-function toggleBookStatus(editbook) {
-
+function toggleBookStatus(book_id) {
+  console.log(book_id);
 }
 
 function openModalForm() {
@@ -64,9 +65,16 @@ function render() {
       <div class="card-body items-center text-center">
         <h2 class="card-title">${valuesCard.title}</h2>
         <p>${valuesCard.author}</p>
-        <div class="card-actions justify-end">
-          <button class="btn btn-primary">${valuesCard.status}</button>
-          <button class="btn btn-ghost">Remove</button>
+        <div class="card-actions justify-end join join-vertical">` 
+        // if else statement. Render Green and Red buttons depending on Read Status
+        + `
+        ${(valuesCard.status == 'Read') ? `
+        <button class="btn btn-accent join-item" data-attribute="${valuesCard.id}" onclick="toggleBookStatus(this)">${valuesCard.status}</button>
+        ` : `
+        <button class="btn btn-error join-item" data-attribute="${valuesCard.id}" onclick="toggleBookStatus(this)">${valuesCard.status}</button>
+        `}
+        ` + `
+          <button class="btn btn-warning join-item" data-attribute="${valuesCard.id}" onclick="removeBookFromLibrary(this)">Remove</button>
         </div>
       </div>
     </div>
@@ -88,7 +96,16 @@ document.querySelector("#add_book_form").addEventListener("submit", function(e){
       let formdata = e.target;
       const newtitle = formdata.elements['newtitle'].value;
       const newauthor = formdata.elements['newauthor'].value;
-      const newstatus = formdata.elements['newstatus'].value;
+      const checkstatus = formdata.elements['checkstatus'].checked;
+      let newstatus;
+
+      console.log(formdata.elements['checkstatus'].checked);
+
+      if (checkstatus == true) {
+        newstatus = 'Read';
+      } else {
+        newstatus = 'Not Read'
+      }
 
       // Use UNIX timestamp as ID
       addBookToLibrary(Date.now(), newtitle, newauthor, newstatus)

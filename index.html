@@ -32,7 +32,10 @@
               <p class="py-4">Press ESC key or click outside to close</p>
               <input type="text" placeholder="Title" class="input input-bordered w-full max-w-xs" id="newtitle" />
               <input type="text" placeholder="Author" class="input input-bordered w-full max-w-xs" id="newauthor"/>
-              <input type="text" placeholder="Status" class="input input-bordered w-full max-w-xs" id="newstatus"/>
+                <label class="cursor-pointer label w-72">
+                  <span class="label-text">Have you read the Book?</span>
+                  <input type="checkbox" checked="checked" class="checkbox checkbox-success" id="checkstatus"/>
+                </label>
               <button type="submit" class="btn btn-primary btn-outline w-24">Submit</button>
               
             </form>
