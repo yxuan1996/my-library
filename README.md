@@ -59,5 +59,5 @@ This is useful for us to toggle the 'Read' state of a book
 
 https://stackoverflow.com/questions/16691833/modify-object-property-in-an-array-of-objects
 
-#### Firebase
-Use Firebase as a database (Future Todo)
+#### Storage
+Use Firebase  or LocalStorage as a database (Future Todo)
