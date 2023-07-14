@@ -4,9 +4,9 @@ const Book = (id, title, author, status) => {
   return { id, title, author, status };
 };
 
-function addBookToLibrary() {
+function addBookToLibrary(newid, newtitle, newauthor, newstatus) {
   // use unix timestamp as ID
-  let newBook = Book(Date.now(), newtitle, newsauthor, newstatus);
+  let newBook = Book(newid, newtitle, newauthor, newstatus);
   myLibrary.push(newBook)
 
   console.log(myLibrary);
@@ -22,11 +22,14 @@ function toggleBookStatus(editbook) {
 }
 
 function openModalForm() {
+  const modal = document.getElementById('add_book_modal');
+  modal.showModal();
 
 }
 
 function closeModalForm() {
-
+  const modal = document.getElementById('add_book_modal');
+  modal.close();
 }
 
 
@@ -36,22 +39,22 @@ function setData() {
 
 function render() {
   const bookgrid = document.getElementById('bookgrid');
-  const valuesCards = [{
-      image: '../img/image1.png',
-      title: 'title 1',
-      content: 'super content 1',
-    },
-    {
-      image: '../img/image2.png',
-      title: 'title 2',
-      content: 'super content 2'
-    },
-    {
-      image: '../img/image-3.png',
-      title: 'title3',
-      content: 'blablablablbalbalbabla blablaba'
-    },
-  ]
+  // const valuesCards = [{
+  //     image: '../img/image1.png',
+  //     title: 'title 1',
+  //     content: 'super content 1',
+  //   },
+  //   {
+  //     image: '../img/image2.png',
+  //     title: 'title 2',
+  //     content: 'super content 2'
+  //   },
+  //   {
+  //     image: '../img/image-3.png',
+  //     title: 'title3',
+  //     content: 'blablablablbalbalbabla blablaba'
+  //   },
+  // ]
 
   // the map function returns a list of objects separated by commas. To remove the commas we use .join('')
   function returnCards(valuesCards) {
@@ -71,8 +74,27 @@ function render() {
     + `</div>`;
   }
 
-  bookgrid.innerHTML = returnCards(valuesCards);
+  bookgrid.innerHTML = returnCards(myLibrary);
 }
 
 // Initialize Page
 render()
+
+
+document.querySelector("#add_book_form").addEventListener("submit", function(e){
+
+      e.preventDefault();    //stop form from submitting
+
+      let formdata = e.target;
+      const newtitle = formdata.elements['newtitle'].value;
+      const newauthor = formdata.elements['newauthor'].value;
+      const newstatus = formdata.elements['newstatus'].value;
+
+      // Use UNIX timestamp as ID
+      addBookToLibrary(Date.now(), newtitle, newauthor, newstatus)
+
+      closeModalForm()
+
+      render()
+
+});
