@@ -49,5 +49,15 @@ When the button is clicked, we retrieve the data attribute using JS.
 
 https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
 
+#### Remove object from JSON list using key
+
+https://stackoverflow.com/questions/15287865/remove-array-element-based-on-object-property
+
+#### Modify object property in list of objects
+
+This is useful for us to toggle the 'Read' state of a book
+
+https://stackoverflow.com/questions/16691833/modify-object-property-in-an-array-of-objects
+
 #### Firebase
-Use Firebase as a database
+Use Firebase as a database (Future Todo)

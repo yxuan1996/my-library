@@ -13,13 +13,27 @@ function addBookToLibrary(newid, newtitle, newauthor, newstatus) {
 
 }
 
-function removeBookFromLibrary(book_id) {
-  console.log(book_id);
-  console.log(book_id.dataset.attribute)
+function removeBookFromLibrary(book_item) {
+  console.log(book_item);
+  console.log(book_item.dataset.attribute);
+
+  myLibrary = myLibrary.filter(item => item.id !== Number(book_item.dataset.attribute));
+
+  render()
 }
 
-function toggleBookStatus(book_id) {
-  console.log(book_id);
+function toggleBookStatus(book_item) {
+
+  let selected_book = myLibrary.find(item => item.id == Number(book_item.dataset.attribute));
+  let book_status = selected_book.status;
+  if (book_status == 'Read') {
+    newstatus = 'Not Read';
+  } else {
+    newstatus = 'Read';
+  }
+  selected_book.status = newstatus;
+
+  render()
 }
 
 function openModalForm() {
